@@ -4,7 +4,7 @@ import "testing"
 
 func TestTester(t *testing.T) {
 	actual := Tester("abc")
-	expected := "abc"
+	expected := "t push --set-upstream mcm masterabc"
 
 	if actual != expected {
 		t.Error("Tester function failed expected output")
