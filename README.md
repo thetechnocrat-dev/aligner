@@ -1,2 +1,2 @@
-# aligner
-go library to align DNA sequences
+# Aligner
+Go library to align DNA sequences
