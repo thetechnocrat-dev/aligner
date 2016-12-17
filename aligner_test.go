@@ -1,7 +1,6 @@
 package aligner
 
 import (
-	"fmt"
 	"testing"
 )
 
