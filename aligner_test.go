@@ -7,7 +7,7 @@ import (
 
 func TestTester(t *testing.T) {
 	actual := Tester("abc")
-	expected := "ab"
+	expected := "abc"
 
 	if actual != expected {
 		t.Error("Tester function failed expected output")
