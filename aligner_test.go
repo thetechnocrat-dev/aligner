@@ -6,9 +6,8 @@ import (
 )
 
 func TestTester(t *testing.T) {
-	fmt.Println("canary test")
 	actual := Tester("abc")
-	expected := "abc"
+	expected := "ab"
 
 	if actual != expected {
 		t.Error("Tester function failed expected output")
