@@ -37,6 +37,11 @@ func compareArrays(arr1, arr2 []string) bool {
 
 // Tests
 func TestAlign(t *testing.T) {
+	const matchScore = float64(1)
+	const mismatchPenalty = float64(-1)
+	const gapPenalty = float64(-1)
+	const gapOpeningPenalty = float64(-4)
+
 	alignTests := []AlignTest{
 		AlignTest{
 			"gcat",
@@ -59,7 +64,7 @@ func TestAlign(t *testing.T) {
 	}
 
 	for _, test := range alignTests {
-		actual := Align(test.seq1, test.seq2)
+		actual := Align(test.seq1, test.seq2, matchScore, mismatchPenalty, gapPenalty, gapOpeningPenalty)
 		if !compareArrays(actual, test.expected) {
 			t.Error(test.message)
 			t.Logf("expected %v, actual %v", test.expected, actual)

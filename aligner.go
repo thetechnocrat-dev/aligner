@@ -4,13 +4,11 @@ func Tester(str string) string {
 	return str
 }
 
-func Align(seq1, seq2 string) []string {
-	const gap = -2
-	const match = 1
-	const mismatch = -1
+func Align(seq1, seq2 string, matchScore, mismatchPenalty, gapPenalty,
+	gapOpeningPenalty float64) []string {
 
 	type node struct {
-		Score int
+		Score float64
 		Path  string
 	}
 
@@ -26,24 +24,24 @@ func Align(seq1, seq2 string) []string {
 	// add initial values
 	dpTable[0][0] = node{0, "start"}
 	for i := 1; i < rowCount; i++ {
-		dpTable[i][0] = node{gap * i, "up"}
+		dpTable[i][0] = node{gapPenalty * float64(i), "up"}
 	}
 	for j := 1; j < colCount; j++ {
-		dpTable[0][j] = node{gap * j, "right"}
+		dpTable[0][j] = node{gapPenalty * float64(j), "right"}
 	}
 
 	// fill in Scores
 	for i := 1; i < rowCount; i++ {
 		for j := 1; j < colCount; j++ {
-			var pairScore int
+			var pairScore float64
 			if seq1[i-1] == seq2[j-1] {
-				pairScore = match
+				pairScore = matchScore
 			} else {
-				pairScore = mismatch
+				pairScore = mismatchPenalty
 			}
 
-			rightScore := dpTable[i][j-1].Score + gap
-			upScore := dpTable[i-1][j].Score + gap
+			rightScore := dpTable[i][j-1].Score + gapPenalty
+			upScore := dpTable[i-1][j].Score + gapPenalty
 			diagScore := dpTable[i-1][j-1].Score + pairScore
 
 			if rightScore >= upScore && rightScore >= diagScore {
