@@ -67,7 +67,7 @@ func Align(seq1, seq2 string, matchScore, mismatchPenalty, gapPenalty,
 
 			yy := yTable[i-1][j].Score + gapPenalty
 			xy := xTable[i-1][j].Score + gapOpeningPenalty + gapPenalty
-			my := mTable[i-1][i].Score + gapOpeningPenalty + gapPenalty
+			my := mTable[i-1][j].Score + gapOpeningPenalty + gapPenalty
 			if yy >= xy && yy >= my {
 				yTable[i][j] = node{yy, "yy"}
 			} else if xy >= my {

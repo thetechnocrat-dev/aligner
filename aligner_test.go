@@ -37,10 +37,10 @@ func compareArrays(arr1, arr2 []string) bool {
 
 // Tests
 func TestAlign(t *testing.T) {
-	const matchScore = float64(2)
+	const matchScore = float64(4)
 	const mismatchPenalty = float64(-6)
 	const gapPenalty = float64(-4)
-	const gapOpeningPenalty = float64(-4)
+	const gapOpeningPenalty = float64(-8)
 
 	alignTests := []AlignTest{
 		AlignTest{
